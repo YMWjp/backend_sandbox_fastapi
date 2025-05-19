@@ -1,36 +1,24 @@
-.PHONY: build run stop clean
+.PHONY: up down build logs up-d
 
-# setup image name and container name
-IMAGE_NAME = fastapi-backend
-CONTAINER_NAME = fastapi-container
+# Start containers
+up:
+	docker compose up
 
-# port number
-PORT = 80
+# Start containers in detached mode
+up-d:
+	docker compose up -d
 
-# build an image
+# Stop containers
+down:
+	docker compose down
+
+# Build images
 build:
-	docker build -t $(IMAGE_NAME) .
+	docker compose build
 
-# run a container
-run:
-	docker run -d --name $(CONTAINER_NAME) -p $(PORT):$(PORT) $(IMAGE_NAME)
-
-# delete a container and stop it
-stop:
-	docker stop $(CONTAINER_NAME) || true
-	docker rm $(CONTAINER_NAME) || true
-
-# delete a image
-clean:
-	docker rmi $(IMAGE_NAME) || true
-
-# restart a container (stop + run)
-restart: stop run
-
-# show logs of a container
+# Show logs
 logs:
-	docker logs -f $(CONTAINER_NAME)
+	docker compose logs -f
 
-# check the status of a container
-status:
-	docker ps -a | grep $(CONTAINER_NAME) 
+# Restart containers
+restart: down up-d 
