@@ -20,5 +20,9 @@ build:
 logs:
 	docker compose logs -f
 
+# Build and run containers
+build-up:
+	docker compose up --build
+
 # Restart containers
 restart: down up-d 
