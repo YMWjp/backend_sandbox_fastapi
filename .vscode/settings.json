@@ -1,2 +1,9 @@
 {
+  // pycacheの非表示
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/.DS_Store": true,
+    "**/.venv": true
+  }
 }
