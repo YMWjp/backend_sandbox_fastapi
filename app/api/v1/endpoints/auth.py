@@ -1,13 +1,13 @@
 from fastapi import APIRouter, Depends
 from fastapi.security import OAuth2PasswordRequestForm
-from app.db.session import DB_DEPENDENCY
+from app.core.utils.deps import DB_DEPENDENCY
 
 router = APIRouter()
 
 @router.post("/login")
 async def login(
-    form_data: OAuth2PasswordRequestForm = Depends(),
-    db: DB_DEPENDENCY = None
+    db: DB_DEPENDENCY,
+    form_data: OAuth2PasswordRequestForm = Depends()
 ):
     """
     ユーザーログインエンドポイント
@@ -17,7 +17,7 @@ async def login(
 
 @router.post("/register")
 async def register(
-    db: DB_DEPENDENCY = None
+    db: DB_DEPENDENCY
 ):
     """
     ユーザー登録エンドポイント

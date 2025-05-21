@@ -1,9 +1,7 @@
 from fastapi import APIRouter
 from app.core.config import settings
-from app.db.session import get_db
+from app.core.utils.deps import DB_DEPENDENCY
 from sqlalchemy import text
-from fastapi import Depends
-from sqlalchemy.ext.asyncio import AsyncSession
 
 router = APIRouter()
 
@@ -24,7 +22,7 @@ async def get_version():
     }
 
 @router.get("/status")
-async def get_status(db: AsyncSession = Depends(get_db)):
+async def get_status(db: DB_DEPENDENCY):
     """
     Return detailed status information of the system
     """

@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.db.session import DB_DEPENDENCY
+from app.core.utils.deps import DB_DEPENDENCY
 
 router = APIRouter()
 
