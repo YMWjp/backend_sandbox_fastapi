@@ -1,33 +1,33 @@
 from pydantic_settings import BaseSettings
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = os.getenv("PROJECT_NAME", "FastAPI Backend")
-    VERSION: str = os.getenv("VERSION", "1.0.0")
-    API_V1_STR: str = os.getenv("API_V1_STR", "/api/v1")
+    # Project
+    ENV: str = "development"
+    PROJECT_NAME: str = "FastAPI Backend"
+    VERSION: str = "1.0.0"
+    API_V1_STR: str = "/api/v1"
     
     # Database
-    DB_USER: str = os.getenv("DB_USER", "")
-    DB_PASSWORD: str = os.getenv("DB_PASSWORD", "")
-    DB_HOST: str = os.getenv("DB_HOST", "")
-    DB_PORT: str = os.getenv("DB_PORT", "3306")
-    DB_NAME: str = os.getenv("DB_NAME", "")
+    DB_USER: str
+    DB_PASSWORD: str
+    DB_HOST: str
+    DB_PORT: str = "3306"
+    DB_NAME: str
 
     # CORS
-    CORS_ORIGINS: list[str] = os.getenv("CORS_ORIGINS", "").split(",")
-    CORS_ALLOW_CREDENTIALS: bool = os.getenv("CORS_ALLOW_CREDENTIALS", "false").lower() == "true"
-    CORS_ALLOW_METHODS: list[str] = os.getenv("CORS_ALLOW_METHODS", "").split(",")
-    CORS_ALLOW_HEADERS: list[str] = os.getenv("CORS_ALLOW_HEADERS", "").split(",")
+    CORS_ORIGINS: list[str] = ["http://localhost:3000"]
+    CORS_ALLOW_CREDENTIALS: bool = True
+    CORS_ALLOW_METHODS: list[str] = ["*"]
+    CORS_ALLOW_HEADERS: list[str] = ["*"]
     
     # JWT
-    SECRET_KEY: str = os.getenv("SECRET_KEY", "")
+    SECRET_KEY: str = ""
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     
     class Config:
+        env_file = ".env"
+        env_file_encoding = "utf-8"
         case_sensitive = True
 
 settings = Settings()
