@@ -11,6 +11,3 @@ class User(Base):
     email = Column(String(255), nullable=False, unique=True)
     created_at = Column(DateTime, default=datetime.now)
     updated_at = Column(DateTime, default=datetime.now)
-
-    items = relationship("Item", back_populates="owner")
-

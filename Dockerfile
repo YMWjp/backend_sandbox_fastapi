@@ -5,6 +5,8 @@ WORKDIR /code
 
 
 COPY ./requirements.txt /code/requirements.txt
+COPY ./alembic.ini /code/alembic.ini
+COPY ./alembic /code/alembic
 
 
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt

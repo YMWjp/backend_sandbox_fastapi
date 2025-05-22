@@ -38,3 +38,19 @@ async def get_status(db: DB_DEPENDENCY):
         "version": settings.API_V1_STR,
         "database": db_status
     } 
+
+@router.get("/config")
+async def get_config():
+    """
+    Return configuration information
+    """
+    if settings.ENV == "development":
+        return {
+            "config": settings.model_dump()
+        }
+    else:
+        return {
+            "status": "operational",
+            "version": settings.API_V1_STR,
+            "database": "connected"
+        }
