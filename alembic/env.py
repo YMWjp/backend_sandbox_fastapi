@@ -9,11 +9,11 @@ from alembic import context
 # access to the values within the .ini file in use.
 config = context.config
 
-config.set_section_option("alembic", "DB_USER", settings.DB_USER)
-config.set_section_option("alembic", "DB_PASSWORD", settings.DB_PASSWORD)
-config.set_section_option("alembic", "DB_HOST", settings.DB_HOST)
-config.set_section_option("alembic", "DB_PORT", settings.DB_PORT)
-config.set_section_option("alembic", "DB_NAME", settings.DB_NAME)
+config.set_section_option("alembic", "MYSQL_USER", settings.MYSQL_USER)
+config.set_section_option("alembic", "MYSQL_PASSWORD", settings.MYSQL_PASSWORD)
+config.set_section_option("alembic", "DOCKER_DB_VOLNAME", settings.DOCKER_DB_VOLNAME)
+config.set_section_option("alembic", "MYSQL_DATABASE", settings.MYSQL_DATABASE)
+config.set_section_option("alembic", "MYSQL_PORT", settings.MYSQL_PORT)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
