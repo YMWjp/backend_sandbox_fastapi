@@ -11,8 +11,9 @@ config = context.config
 
 config.set_section_option("alembic", "MYSQL_USER", settings.MYSQL_USER)
 config.set_section_option("alembic", "MYSQL_PASSWORD", settings.MYSQL_PASSWORD)
+config.set_section_option("alembic", "DOCKER_DB_VOLNAME", settings.DOCKER_DB_VOLNAME)
+config.set_section_option("alembic", "DB_PORT", settings.DB_PORT)
 config.set_section_option("alembic", "MYSQL_DATABASE", settings.MYSQL_DATABASE)
-config.set_section_option("alembic", "MYSQL_PORT", settings.MYSQL_PORT)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
