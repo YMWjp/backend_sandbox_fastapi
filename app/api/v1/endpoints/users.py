@@ -1,11 +1,20 @@
 from fastapi import APIRouter
-from app.core.utils.deps import DB_DEPENDENCY
+from app.core.utils.deps import USER_SERVICE_DEPENDENCY
+from app.domain.schemas.user import UserInDB, UserCreate
 
 router = APIRouter()
 
+@router.post("/", response_model=UserInDB)
+async def create_user(
+    user_data: UserCreate,
+    user_service: USER_SERVICE_DEPENDENCY
+):
+    user = await user_service.create_user(user_data)
+    return user
+
 @router.get("/me")
 async def read_users_me(
-    db: DB_DEPENDENCY = None
+    user_service: USER_SERVICE_DEPENDENCY
 ):
     """
     現在のユーザー情報を取得
@@ -16,7 +25,7 @@ async def read_users_me(
 @router.get("/{user_id}")
 async def read_user(
     user_id: int,
-    db: DB_DEPENDENCY = None
+    user_service: USER_SERVICE_DEPENDENCY
 ):
     """
     指定されたIDのユーザー情報を取得
