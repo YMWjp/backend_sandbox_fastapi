@@ -21,8 +21,6 @@ class Settings(BaseSettings):
     MYSQL_DATABASE: str
     MYSQL_USER: str
     MYSQL_PASSWORD: str
-    MYSQL_PORT: str
-    MYSQL_HOST: str
 
     # Docker
     DOCKER_DB_VOLNAME: str
