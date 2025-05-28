@@ -1,6 +1,53 @@
-# backend_sandbox_fastapi
+# 🧪 FastAPI Sandbox
 
-This project is a backend application built using FastAPI. It is structured to provide a clean architecture with separate layers for domain models, services, repositories, and API endpoints.
+A simple sandbox environment for experimenting with **FastAPI** and **Clean Architecture**, containerized with Docker.  
+This project provides a practical foundation for building scalable and maintainable backend APIs using modern tools.
+
+## 🚀 Features
+
+- FastAPI for building async web APIs
+- **Clean Architecture** design pattern for modular, testable code
+- MySQL database with Alembic for migrations
+- Dockerized environment for development
+- Example endpoints with validation and DB interaction
+
+## 🛠 Tech Stack
+
+- FastAPI
+- Clean Architecture
+- Docker / Docker Compose
+- MySQL
+- Alembic
+- SQLAlchemy
+
+## 📁 Project Structure
+
+```text
+.
+├── app/
+│   ├── api/            # Routers (entry points)
+│   │   └── v1/         # Version 1 of the API
+│   │       ├── endpoints/ # API endpoints
+│   │       └── router.py  # API router configuration
+│   ├── core/           # Configuration and settings
+│   │   ├── config.py   # Application configuration
+│   │   ├── logging.py  # Logging configuration
+│   │   ├── rate_limiting.py # Rate limiting logic
+│   │   ├── security.py # Security utilities
+│   │   └── utils/      # Utility functions
+│   ├── db/             # DB session and migrations
+│   │   ├── base.py     # Base class for models
+│   │   ├── session.py  # Database session management
+│   │   └── repositories/ # Database repositories
+│   ├── domain/         # Domain models and schemas
+│   │   ├── models/     # Domain models
+│   │   └── schemas/    # Pydantic schemas
+│   ├── repositories/   # DB access logic
+│   │   └── user.py     # User repository
+│   ├── services/       # Business logic
+│   │   └── user.py     # User service
+│   └── main.py         # Application entry point
+```
 
 ## Project Structure
 
