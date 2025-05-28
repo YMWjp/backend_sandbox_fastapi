@@ -12,6 +12,13 @@ async def create_user(
     user = await user_service.create_user(user_data)
     return user
 
+@router.get("/")
+async def read_users(
+    user_service: USER_SERVICE_DEPENDENCY
+):
+    users = await user_service.get_users()
+    return users
+
 @router.get("/me")
 async def read_users_me(
     user_service: USER_SERVICE_DEPENDENCY

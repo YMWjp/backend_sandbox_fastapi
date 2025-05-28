@@ -2,13 +2,13 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from app.core.config import settings
 
-DB_USER = settings.DB_USER
-DB_PASSWORD = settings.DB_PASSWORD
-DB_HOST = settings.DB_HOST
+MYSQL_USER = settings.MYSQL_USER
+MYSQL_PASSWORD = settings.MYSQL_PASSWORD
+DOCKER_DB_VOLNAME = settings.DOCKER_DB_VOLNAME
 DB_PORT = settings.DB_PORT
-DB_NAME = settings.DB_NAME
+MYSQL_DATABASE = settings.MYSQL_DATABASE
 
-SQLALCHEMY_DATABASE_URL = f"mysql+mysqlconnector://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+SQLALCHEMY_DATABASE_URL = f"mysql+mysqlconnector://{MYSQL_USER}:{MYSQL_PASSWORD}@{DOCKER_DB_VOLNAME}:{DB_PORT}/{MYSQL_DATABASE}"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
